@@ -1,4 +1,4 @@
-# Tim Li — Résumé
+# Syun-Ting Li — Résumé
 
 [![Build & publish resume](../../actions/workflows/build.yml/badge.svg)](../../actions/workflows/build.yml)
 
@@ -36,4 +36,4 @@ Or open the repo in [Overleaf](https://www.overleaf.com) with the XeLaTeX compil
 ## License
 
 Template: Awesome-CV by Claud D. Park — class under LPPL 1.3c, template under CC BY-SA 4.0.
-Résumé content © Tim Li.
+Résumé content © Syun-Ting Li.

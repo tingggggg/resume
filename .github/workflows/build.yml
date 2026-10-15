@@ -32,7 +32,7 @@ jobs:
           mkdir -p _site
           cp site/* _site/
           cp resume.pdf _site/resume.pdf
-          cp resume.pdf "_site/Tim_Li_Resume.pdf"
+          cp resume.pdf "_site/Syun-Ting_Li_Resume.pdf"
 
       - name: Upload PDF as build artifact
         uses: actions/upload-artifact@v4
