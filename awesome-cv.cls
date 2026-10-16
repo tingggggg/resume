@@ -475,6 +475,12 @@
         {
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
           \href{https://scholar.google.com/citations?user=\@googlescholarid}{\faGraduationCap\acvHeaderIconSep\@googlescholarname}
+        }
+      \ifthenelse{\isundefined{\@extrainfo}}%
+        {}
+        {
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \@extrainfo
         }} & \headersocialstyle{
       \newbool{isstart}
       \setbool{isstart}{true}
@@ -570,12 +576,7 @@
       %     \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
       %     \href{https://scholar.google.com/citations?user=\@googlescholarid}{\faGraduationCap\acvHeaderIconSep\@googlescholarname}%
       %   }%
-      \ifthenelse{\isundefined{\@extrainfo}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \@extrainfo%
-        }%
+      % \@extrainfo is shown in the header tabular above
     }\par\vspace{\acvHeaderAfterSocialSkip}%
     \ifthenelse{\isundefined{\@quote}}%
       {}%
