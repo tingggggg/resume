@@ -491,10 +491,13 @@
           \href{\@github}{\faGithubSquare\acvHeaderIconSep\@github}
         }} \\
         & \headersocialstyle{
+      \newbool{isstart}
+      \setbool{isstart}{true}
       \ifthenelse{\isundefined{\@linkedin}}
         {}
         {
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep linkedin.com/in/\@linkedin}
+          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
+          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep in/\@linkedin}
         }}
     \end{tabular}
     
