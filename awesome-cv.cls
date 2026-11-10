@@ -489,6 +489,12 @@
         {
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
           \href{\@github}{\faGithubSquare\acvHeaderIconSep\@github}
+        }} \\
+        & \headersocialstyle{
+      \ifthenelse{\isundefined{\@linkedin}}
+        {}
+        {
+          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep linkedin.com/in/\@linkedin}
         }}
     \end{tabular}
     
@@ -534,12 +540,12 @@
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
           \href{https://stackoverflow.com/users/\@stackoverflowid}{\faStackOverflow\acvHeaderIconSep\@stackoverflowname}%
         }%
-      \ifthenelse{\isundefined{\@linkedin}}%
-        {}%
-        {%
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
-        }%
+      % \ifthenelse{\isundefined{\@linkedin}}%
+      % {}%
+      % {%
+      % \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
+      % \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep\@linkedin}%
+      % }%
       \ifthenelse{\isundefined{\@twitter}}%
         {}%
         {%
