@@ -34,7 +34,7 @@ jobs:
           # Cache-bust PDF links with the commit SHA (Pages caches for 10 min)
           sed -i "s/__VERSION__/${GITHUB_SHA::7}/g" _site/index.html
           cp resume.pdf _site/resume.pdf
-          cp resume.pdf "_site/Syun-Ting_Li_Resume.pdf"
+          cp resume.pdf "_site/Syun-Ting_Lee_Resume.pdf"
 
       - name: Upload PDF as build artifact
         uses: actions/upload-artifact@v4

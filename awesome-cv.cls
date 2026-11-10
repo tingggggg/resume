@@ -488,7 +488,7 @@
         {}
         {
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{\@github}{\faGithubSquare\acvHeaderIconSep\@github}
+          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep github.com/\@github}
         }} \\
         & \headersocialstyle{
       \newbool{isstart}
@@ -497,7 +497,7 @@
         {}
         {
           \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep in/\@linkedin}
+          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep linkedin.com/in/\@linkedin}
         }}
     \end{tabular}
     
