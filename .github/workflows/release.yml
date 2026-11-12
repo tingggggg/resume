@@ -1,0 +1,46 @@
+name: Release resume PDF
+
+# Builds the resume at a version tag and attaches the PDF to a GitHub Release.
+# - Pushing a tag like v1.1 runs it automatically.
+# - For a tag that already exists (e.g. v1.0), run it manually from the
+#   Actions tab and enter the tag name.
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to release (e.g. v1.0)'
+        required: true
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.inputs.tag || github.ref_name }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: refs/tags/${{ env.TAG }}
+
+      - name: Compile resume.pdf with XeLaTeX
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: resume.tex
+          latexmk_use_xelatex: true
+
+      - name: Create or update the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          asset="Syun-Ting_Lee_Resume_${TAG}.pdf"
+          cp resume.pdf "$asset"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            gh release upload "$TAG" "$asset" --clobber
+          else
+            gh release create "$TAG" "$asset" --verify-tag --title "$TAG" \
+              --notes "Resume PDF built from tag $TAG."
+          fi
