@@ -187,8 +187,8 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{18pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{18pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{26pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{26pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{11pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
@@ -385,12 +385,14 @@
 %% Define helper macros a user can change easily
 % Header
 \newcommand{\acvHeaderNameDelim}{\space}
-\newcommand{\acvHeaderAfterNameSkip}{.4mm}
+\newcommand{\acvHeaderAfterNameSkip}{1.5mm}
 \newcommand{\acvHeaderAfterPositionSkip}{.4mm}
 \newcommand{\acvHeaderAfterAddressSkip}{-.5mm}
 \newcommand{\acvHeaderIconSep}{\space}
+% Contact icon in a fixed-width box so the text after it lines up
+\newcommand{\acvHeaderIcon}[1]{\makebox[1.4em][l]{#1}}
 \newcommand{\acvHeaderSocialSep}{\quad\textbar\quad}
-\newcommand{\acvHeaderAfterSocialSkip}{6mm}
+\newcommand{\acvHeaderAfterSocialSkip}{2mm}
 \newcommand{\acvHeaderAfterQuoteSkip}{5mm}
 
 % Others
@@ -448,59 +450,25 @@
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     
-    \begin{tabular}{cl}
-        \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname} & \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@mobile}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \faPhone\acvHeaderIconSep\@mobile
-        }} \\
-        \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position}} & \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@email}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{mailto:\@email}{\faEnvelope\acvHeaderIconSep\@email}
-        }} \\
-        \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@googlescholarid}}%
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://scholar.google.com/citations?user=\@googlescholarid}{\faGraduationCap\acvHeaderIconSep\@googlescholarname}
-        }
-      \ifthenelse{\isundefined{\@extrainfo}}%
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \@extrainfo
-        }} & \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@github}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://github.com/\@github}{\faGithubSquare\acvHeaderIconSep github.com/\@github}
-        }} \\
-        & \headersocialstyle{
-      \newbool{isstart}
-      \setbool{isstart}{true}
-      \ifthenelse{\isundefined{\@linkedin}}
-        {}
-        {
-          \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}
-          \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\acvHeaderIconSep linkedin.com/in/\@linkedin}
-        }}
-    \end{tabular}
-    
+    % Name and position on the left, contacts on the right; bottom baselines aligned
+    \noindent
+    \begin{minipage}[b]{0.6\linewidth}
+      \raggedright
+      \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
+      \ifthenelse{\isundefined{\@position}}{}{\\[\acvHeaderAfterNameSkip]\headerpositionstyle{\@position}}%
+      \ifthenelse{\isundefined{\@extrainfo}}{}{\\\headersocialstyle{\@extrainfo}}%
+    \end{minipage}%
+    \hfill
+    \headersocialstyle{%
+      \renewcommand{\arraystretch}{1.15}%
+      \begin{tabular}[b]{@{}l@{}}
+        \ifthenelse{\isundefined{\@mobile}}{}{\acvHeaderIcon{\faPhone}\@mobile\\}
+        \ifthenelse{\isundefined{\@email}}{}{\href{mailto:\@email}{\acvHeaderIcon{\faEnvelope}\@email}\\}
+        \ifthenelse{\isundefined{\@github}}{}{\href{https://github.com/\@github}{\acvHeaderIcon{\faGithubSquare}github.com/\@github}\\}
+        \ifthenelse{\isundefined{\@linkedin}}{}{\href{https://www.linkedin.com/in/\@linkedin}{\acvHeaderIcon{\faLinkedinSquare}linkedin.com/in/\@linkedin}\\}
+      \end{tabular}%
+    }\par
+
     % \\[\acvHeaderAfterNameSkip]%
     % \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
@@ -585,7 +553,7 @@
       %     \ifbool{isstart}{\setbool{isstart}{false}}{\acvHeaderSocialSep}%
       %     \href{https://scholar.google.com/citations?user=\@googlescholarid}{\faGraduationCap\acvHeaderIconSep\@googlescholarname}%
       %   }%
-      % \@extrainfo is shown in the header tabular above
+      % \@extrainfo is shown under the position above
     }\par\vspace{\acvHeaderAfterSocialSkip}%
     \ifthenelse{\isundefined{\@quote}}%
       {}%
