@@ -186,51 +186,57 @@
 %                Configuration for styles
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
+% Global font scale in percent, applied to every style below except the footer.
+% \acvOnePage sets it to the largest value that keeps the page on one sheet.
+\newcount\acvscale
+\acvscale=100
+\newcommand*{\acvfontsize}[2]{\fontsize{\dimexpr #1pt*\acvscale/100\relax}{\dimexpr #2em*\acvscale/100\relax}}
+
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{22pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{22pt}{1em}\headerfont\bfseries\color{text} #1}}
-\newcommand*{\headerpositionstyle}[1]{{\fontsize{11pt}{1em}\headerfont\color{text} #1}}
-\newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
-\newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\acvfontsize{22}{1}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\acvfontsize{22}{1}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerpositionstyle}[1]{{\acvfontsize{11}{1}\headerfont\color{text} #1}}
+\newcommand*{\headeraddressstyle}[1]{{\acvfontsize{8}{1}\headerfont\itshape\color{lighttext} #1}}
+\newcommand*{\headersocialstyle}[1]{{\acvfontsize{9}{1}\headerfont\color{text} #1}}
+\newcommand*{\headerquotestyle}[1]{{\acvfontsize{9}{1}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
-\newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\sectionstyle}[1]{{\acvfontsize{16}{1}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\subsectionstyle}[1]{{\acvfontsize{12}{1}\bodyfont\scshape\textcolor{text}{#1}}}
+\newcommand*{\paragraphstyle}{\acvfontsize{9}{1}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\acvfontsize{10}{1}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\acvfontsize{9}{1}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\acvfontsize{8}{1}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\acvfontsize{9}{1}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\acvfontsize{9}{1}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
-\newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
-\newcommand*{\subentrypositionstyle}[1]{{\fontsize{7pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\subentrydatestyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\subentrylocationstyle}[1]{{\fontsize{7pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\subdescriptionstyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\subentrytitlestyle}[1]{{\acvfontsize{8}{1}\bodyfont\mdseries\color{graytext} #1}}
+\newcommand*{\subentrypositionstyle}[1]{{\acvfontsize{7}{1}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\subentrydatestyle}[1]{{\acvfontsize{7}{1}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\subentrylocationstyle}[1]{{\acvfontsize{7}{1}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\subdescriptionstyle}[1]{{\acvfontsize{8}{1}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of honor
-\newcommand*{\honortitlestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorpositionstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\color{graytext} #1}}
-\newcommand*{\honorlocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\honortitlestyle}[1]{{\acvfontsize{9}{1}\bodyfont\color{graytext} #1}}
+\newcommand*{\honorpositionstyle}[1]{{\acvfontsize{9}{1}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\honordatestyle}[1]{{\acvfontsize{9}{1}\bodyfont\color{graytext} #1}}
+\newcommand*{\honorlocationstyle}[1]{{\acvfontsize{9}{1}\bodyfontlight\slshape\color{awesome} #1}}
 
 % For elements of skill
-\newcommand*{\skilltypestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\skillsetstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\color{text} #1}}
+\newcommand*{\skilltypestyle}[1]{{\acvfontsize{10}{1}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\skillsetstyle}[1]{{\acvfontsize{9}{1}\bodyfontlight\color{text} #1}}
 
 % For elements of the cover letter
-\newcommand*{\lettersectionstyle}[1]{{\fontsize{14pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
-\newcommand*{\recipientaddressstyle}[1]{{\fontsize{9pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\recipienttitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\lettertitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
-\newcommand*{\letterdatestyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\lettertextstyle}{\fontsize{10pt}{1.4em}\bodyfontlight\upshape\color{graytext}}
-\newcommand*{\letternamestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\letterenclosurestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\slshape\color{lighttext} #1}}
+\newcommand*{\lettersectionstyle}[1]{{\acvfontsize{14}{1}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
+\newcommand*{\recipientaddressstyle}[1]{{\acvfontsize{9}{1}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\recipienttitlestyle}[1]{{\acvfontsize{11}{1}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\lettertitlestyle}[1]{{\acvfontsize{10}{1}\bodyfontlight\bfseries\color{darktext} \underline{#1}}}
+\newcommand*{\letterdatestyle}[1]{{\acvfontsize{9}{1}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\lettertextstyle}{\acvfontsize{10}{1.4}\bodyfontlight\upshape\color{graytext}}
+\newcommand*{\letternamestyle}[1]{{\acvfontsize{10}{1}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\letterenclosurestyle}[1]{{\acvfontsize{10}{1}\bodyfontlight\slshape\color{lighttext} #1}}
 
 
 %-------------------------------------------------------------------------------
@@ -418,12 +424,15 @@
 %-------------------------------------------------------------------------------
 %                Commands for elements of CV structure
 %-------------------------------------------------------------------------------
+\newlength{\photodim}
+\newlength{\headertextwidth}
+\newlength{\headerphotowidth}
+
 % Define a header for CV
 % Usage: \makecvheader
 \newcommand*{\makecvheader}[1][C]{%
   \newcommand*{\drawphoto}{%
     \ifthenelse{\isundefined{\@photo}}{}{%
-      \newlength{\photodim}
       \ifthenelse{\equal{\@photoshape}{circle}}%
         {\setlength{\photodim}{1.3cm}}%
         {\setlength{\photodim}{1.8cm}}%
@@ -435,8 +444,6 @@
       \end{tikzpicture}
     }%
   }
-  \newlength{\headertextwidth}
-  \newlength{\headerphotowidth}
   \ifthenelse{\isundefined{\@photo}}{
     \setlength{\headertextwidth}{\textwidth}
     \setlength{\headerphotowidth}{0cm}
@@ -562,6 +569,30 @@
   \begin{minipage}[c]{\headerphotowidth}%
     \ifthenelse{\equal{\@photoalign}{right}}{\raggedleft\drawphoto}{}
   \end{minipage}
+}
+
+% Typeset the CV body at the largest font scale, from \acvMaxScale down to
+% \acvMinScale percent, at which it still fits within one page
+% Usage: \acvOnePage{<header and sections>}
+\newcommand*{\acvMaxScale}{130}
+\newcommand*{\acvMinScale}{80}
+\newsavebox{\acv@fitbox}
+\newcommand{\acvOnePage}[1]{%
+  \long\def\acv@content{#1}%
+  \global\acvscale=\acvMaxScale\relax
+  \acv@fit
+  \noindent\usebox{\acv@fitbox}%
+}
+\newcommand*{\acv@fit}{%
+  \sbox{\acv@fitbox}{\begin{minipage}[t]{\textwidth}\acv@content\end{minipage}}%
+  \@tempswafalse
+  \ifdim\dimexpr\ht\acv@fitbox+\dp\acv@fitbox\relax>\textheight
+    \ifnum\acvscale>\acvMinScale\relax
+      \global\advance\acvscale by -1\relax
+      \@tempswatrue
+    \fi
+  \fi
+  \if@tempswa\expandafter\acv@fit\fi
 }
 
 % Define a footer for CV
