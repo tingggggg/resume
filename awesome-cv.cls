@@ -187,8 +187,8 @@
 %-------------------------------------------------------------------------------
 % Configure styles for each CV elements
 % For fundamental structures
-\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{26pt}{1em}\headerfontlight\color{graytext} #1}}
-\newcommand*{\headerlastnamestyle}[1]{{\fontsize{26pt}{1em}\headerfont\bfseries\color{text} #1}}
+\newcommand*{\headerfirstnamestyle}[1]{{\fontsize{22pt}{1em}\headerfontlight\color{graytext} #1}}
+\newcommand*{\headerlastnamestyle}[1]{{\fontsize{22pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{11pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
 \newcommand*{\headersocialstyle}[1]{{\fontsize{9pt}{1em}\headerfont\color{text} #1}}
@@ -450,10 +450,10 @@
   \begin{minipage}[c]{\headertextwidth}
     \ifthenelse{\equal{#1}{L}}{\raggedright}{\ifthenelse{\equal{#1}{R}}{\raggedleft}{\centering}}
     
-    % Name and position on the left, contacts on the right; bottom baselines aligned
+    % Name and position centered on the left, contacts on the right, both vertically centered
     \noindent
-    \begin{minipage}[b]{0.6\linewidth}
-      \raggedright
+    \begin{minipage}[c]{0.6\linewidth}
+      \centering
       \headerfirstnamestyle{\@firstname}\headerlastnamestyle{{}\acvHeaderNameDelim\@lastname}%
       \ifthenelse{\isundefined{\@position}}{}{\\[\acvHeaderAfterNameSkip]\headerpositionstyle{\@position}}%
       \ifthenelse{\isundefined{\@extrainfo}}{}{\\\headersocialstyle{\@extrainfo}}%
@@ -461,7 +461,7 @@
     \hfill
     \headersocialstyle{%
       \renewcommand{\arraystretch}{1.15}%
-      \begin{tabular}[b]{@{}l@{}}
+      \begin{tabular}[c]{@{}l@{}}
         \ifthenelse{\isundefined{\@mobile}}{}{\acvHeaderIcon{\faPhone}\@mobile\\}
         \ifthenelse{\isundefined{\@email}}{}{\href{mailto:\@email}{\acvHeaderIcon{\faEnvelope}\@email}\\}
         \ifthenelse{\isundefined{\@github}}{}{\href{https://github.com/\@github}{\acvHeaderIcon{\faGithubSquare}github.com/\@github}\\}
