@@ -82,6 +82,10 @@
 %-------------------------------------------------------------------------------
 \begin{document}
 
+% Print the header with above personal informations
+% Give optional argument to change alignment(C: center, L: left, R: right)
+\makecvheader[C]
+
 % Print the footer with 3 arguments(<left>, <center>, <right>)
 % Leave any of these blank if they are not needed
 \makecvfooter
@@ -94,17 +98,12 @@
 %	CV/RESUME CONTENT
 %	Each section is imported separately, open each file in turn to modify content
 %-------------------------------------------------------------------------------
-% Header and sections, scaled to the largest font size that fits on one page
-% Give \makecvheader an optional argument to change alignment(C: center, L: left, R: right)
-\acvOnePage{%
-  \makecvheader[C]
-  \input{resume/summary.tex}
-  \input{resume/experience.tex}
-  \input{resume/skills.tex}
-  \input{resume/honors.tex}
-  \input{resume/extracurricular.tex}
-  \input{resume/education.tex}
-}
+\input{resume/summary.tex}
+\input{resume/experience.tex}
+\input{resume/skills.tex}
+\input{resume/honors.tex}
+\input{resume/extracurricular.tex}
+\input{resume/education.tex}
 
 
 %-------------------------------------------------------------------------------
