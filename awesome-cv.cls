@@ -462,10 +462,10 @@
     \headersocialstyle{%
       \renewcommand{\arraystretch}{1.15}%
       \begin{tabular}[c]{@{}l@{}}
-        \ifthenelse{\isundefined{\@mobile}}{}{\acvHeaderIcon{\faPhone}\@mobile\\}
-        \ifthenelse{\isundefined{\@email}}{}{\href{mailto:\@email}{\acvHeaderIcon{\faEnvelope}\@email}\\}
-        \ifthenelse{\isundefined{\@github}}{}{\href{https://github.com/\@github}{\acvHeaderIcon{\faGithubSquare}github.com/\@github}\\}
-        \ifthenelse{\isundefined{\@linkedin}}{}{\href{https://www.linkedin.com/in/\@linkedin}{\acvHeaderIcon{\faLinkedinSquare}linkedin.com/in/\@linkedin}\\}
+        \ifthenelse{\isundefined{\@mobile}}{}{\acvHeaderIcon{\faPhone}\@mobile\\}%
+        \ifthenelse{\isundefined{\@email}}{}{\href{mailto:\@email}{\acvHeaderIcon{\faEnvelope}\@email}\\}%
+        \ifthenelse{\isundefined{\@github}}{}{\href{https://github.com/\@github}{\acvHeaderIcon{\faGithubSquare}github.com/\@github}\\}%
+        \ifthenelse{\isundefined{\@linkedin}}{}{\href{https://www.linkedin.com/in/\@linkedin}{\acvHeaderIcon{\faLinkedinSquare}linkedin.com/in/\@linkedin}\\}%
       \end{tabular}%
     }\par
 
